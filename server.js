@@ -27,7 +27,7 @@ const port = process.env.PORT || 4000
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 
-let whitelist = ['http://localhost:4000']
+let whitelist = ['https://localhost:4000', 'https://ecx-day-25.herokuapp.com/']
 var corsOption = {
     origin: (origin, call) => {
         if(!origin) return call(null, true)
@@ -55,7 +55,7 @@ mongoose.connect(db, {
 //routes
 app.use('/', user)
 
-app.use('/asd', cors(corsOption), (req, res) => {
+app.use('/cors', cors(corsOption), (req, res) => {
     res.status(200).json({ msg: 'CORS policy'})
 })
 
