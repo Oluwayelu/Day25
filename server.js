@@ -55,7 +55,7 @@ mongoose.connect(db, {
 //routes
 app.use('/', user)
 
-app.use('/cors', cors(corsOption), (req, res) => {
+app.get('/cors', cors(corsOption), (req, res) => {
     res.status(200).json({ msg: 'CORS policy'})
 })
 
