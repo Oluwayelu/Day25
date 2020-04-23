@@ -39,6 +39,8 @@ var corsOption = {
     }
 }
 
+app.use(cors(corsOption))
+
 app.use(morgan(':method :url :status :response-time ms', {
     stream: fs.createWriteStream(path.join(__dirname, 'logs'))
 }))
@@ -54,10 +56,6 @@ mongoose.connect(db, {
 
 //routes
 app.use('/', user)
-
-app.get('/cors', cors(corsOption), (req, res) => {
-    res.status(200).json({ msg: 'CORS policy'})
-})
 
 app.listen(port, () => {
     console.log(`Server running on port ${port}`)
